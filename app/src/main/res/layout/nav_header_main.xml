@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="50dp">
+
+    <ImageView
+        android:layout_width="47dp"
+        android:layout_height="72dp"
+        android:src="@drawable/menuuser" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:text="Artur Eduardo"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="42dp"
+        android:text="São Leopoldo, RS"
+        android:textColor="@color/white"
+        android:textSize="13dp" />
+</RelativeLayout>

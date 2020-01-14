@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search"
+    android:layout_width="match_parent"
+    android:layout_height="60sp"
+    android:background="@color/colorPrimary">
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginBottom="13dp"
+        android:layout_toStartOf="@+id/imageView5"
+        android:background="@color/secondaryColor"
+        android:drawableLeft="@drawable/search"
+        android:drawablePadding="6sp"
+        android:hint="@string/hintLocal"
+        android:padding="6sp" />
+
+    <ImageButton
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="370dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="9dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/btnConfig"
+        android:src="@drawable/config32" />
+</LinearLayout>
