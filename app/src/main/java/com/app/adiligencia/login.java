@@ -17,7 +17,6 @@ public class login extends AppCompatActivity {
 
     public void login(View view) {
 
-
         /*
         APENAS QUANDO O USUÁRIO FOR VERIFICADO E EXISTIR
         Intent intent = new Intent(this, home.class);

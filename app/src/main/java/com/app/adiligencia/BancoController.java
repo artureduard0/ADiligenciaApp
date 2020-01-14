@@ -33,16 +33,11 @@ public class BancoController {
         db.close();
 
         if(resultado == -1){
-            return "Houve um erro ao inserir os dados";
+            return "Erro";
         }else{
             return "Sucesso";
         }
     }
 
-    public SQLiteDatabase getDatabase() {
-        if (db == null) {
-            db = banco.getWritableDatabase();
-        }
-        return db;
-    }
+
 }

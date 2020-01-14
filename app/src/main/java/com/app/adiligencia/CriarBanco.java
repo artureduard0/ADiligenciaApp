@@ -31,8 +31,26 @@ public class CriarBanco extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //se existir recriar
-        db.execSQL("DROP TABLE IF EXISTS " + TABELA);
-        onCreate(db);
+
+    }
+
+    public String getTabela(){
+        return this.TABELA;
+    }
+
+    public String getId(){
+        return this.ID;
+    }
+
+    public String getNome(){
+        return this.NOME;
+    }
+
+    public String getEmail(){
+        return this.EMAIL;
+    }
+
+    public String getSenha(){
+        return this.SENHA;
     }
 }
