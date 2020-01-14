@@ -2,6 +2,7 @@ package com.app.adiligencia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class cadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+        //Intent intent = new Intent(this, login.class);
 
         Button btCadastrar = (Button)findViewById(R.id.bt_cadastrar);
         btCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +37,7 @@ public class cadastro extends AppCompatActivity {
 
                     String resultado = crud.inserirDados(strNome,strEmail,strSenha);
                     Toast.makeText(getApplicationContext(),"Cadastro realizado.",Toast.LENGTH_LONG).show();
+                    //startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(),"As senhas não conferem.",Toast.LENGTH_LONG).show();
                 }
