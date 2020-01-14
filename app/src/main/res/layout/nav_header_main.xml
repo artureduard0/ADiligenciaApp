@@ -9,25 +9,25 @@
     <ImageView
         android:layout_width="47dp"
         android:layout_height="72dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="34dp"
         android:src="@drawable/menuuser" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="34dp"
-        android:text="Artur Eduardo"
+        android:layout_marginTop="50dp"
+        android:text="@string/nomeUser"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="65dp"
-        android:text="São Leopoldo, RS"
+        android:layout_marginTop="75dp"
+        android:text="@string/cidade"
         android:textColor="@color/white"
-        android:textSize="13dp" />
+        android:textSize="13sp" />
 </RelativeLayout>

@@ -49,6 +49,16 @@
     <string name="sobre">Sobre</string>
     <string name="minhas_dilig_ncias">Minhas diligências</string>
     <string name="termos_e_condi_es">Termos e condições</string>
-    <string name="sair">Sair</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="nome">Nome</string>
+    <string name="confirme_a_senha">Confirme a senha</string>
+    <string name="cadastre_se">Cadastre-se</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="home">Home</string>
+    <string name="buscar_diligencias">Buscar diligências</string>
+    <string name="minhas_diligencias">Minhas diligências</string>
+    <string name="termos_e_condicoes">Termos e condições</string>
+    <string name="sair">Sair</string>
+    <string name="nomeUser">Artur Eduardo</string>
+    <string name="cidade">São Leopoldo, RS</string>
 </resources>
