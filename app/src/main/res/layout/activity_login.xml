@@ -8,7 +8,7 @@
     tools:context=".login">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/tiEmailLogin"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -25,13 +25,13 @@
         android:inputType="textEmailAddress"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/tiSenhaLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/tiSenhaLogin"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -50,7 +50,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_esqueceu_senha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/tiEmailLogin" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -61,7 +61,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="32dp"
         android:contentDescription="@string/ctdescLogotipo"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/tiEmailLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -81,7 +81,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/tiSenhaLogin" />
 
     <Button
         android:layout_width="wrap_content"

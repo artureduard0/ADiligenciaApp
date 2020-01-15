@@ -61,4 +61,5 @@
     <string name="sair">Sair</string>
     <string name="nomeUser">Artur Eduardo</string>
     <string name="cidade">São Leopoldo, RS</string>
+    <string name="recuperar_senha">Recuperar senha</string>
 </resources>

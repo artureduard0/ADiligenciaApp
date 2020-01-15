@@ -8,13 +8,14 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_rounded"
+        android:statusBarColor="@color/colorPrimary"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
-        android:statusBarColor="@color/colorPrimary"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".esqueceu_a_senha"></activity>
         <activity android:name=".cadastro" />
         <activity android:name=".welcome" />
-        <activity android:name=".menu" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".menu" />
         <activity android:name=".home" />
         <activity android:name=".login" />
         <activity android:name=".MainActivity">

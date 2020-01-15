@@ -14,30 +14,62 @@ public class BancoController {
     private static final String EMAIL = "email";
     private static final String SENHA = "senha";
 
-    public BancoController(Context context){
+    public BancoController(Context context) {
         banco = new CriarBanco(context);
     }
 
-    public String inserirDados(String nome, String email, String senha){
+    public String inserirDados(String nome, String email, String senha) {
         ContentValues valores;
         long resultado;
 
         db = banco.getWritableDatabase();
         valores = new ContentValues();
 
-        valores.put(NOME,nome);
-        valores.put(EMAIL,email);
-        valores.put(SENHA,senha);
+        valores.put(NOME, nome);
+        valores.put(EMAIL, email);
+        valores.put(SENHA, senha);
 
         resultado = db.insert(TABELA, null, valores);
         db.close();
 
-        if(resultado == -1){
+        if (resultado == -1) {
             return "Erro";
-        }else{
+        } else {
             return "Sucesso";
         }
     }
 
+    public boolean isCadastrado(String email){
+        db = banco.getWritableDatabase();
+        String sql = "SELECT * FROM "+TABELA+" WHERE "+EMAIL+" = ?";
+        String[] selectionArgs = new String[1];
+        selectionArgs[0] = email;
+        Cursor cursor = db.rawQuery(sql,selectionArgs);
+        if(cursor == null || cursor.getCount() == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 
+    public Cursor fazerLogin(String email, String senha){
+        db = banco.getWritableDatabase();
+        String sql = "SELECT * FROM "+TABELA+" WHERE "+EMAIL+" = ? AND "+SENHA+" = ?";
+        String[] selectionArgs = new String[]{ email, senha };
+        Cursor cursor = db.rawQuery(sql,selectionArgs);
+        if(cursor != null) {
+            cursor.moveToFirst();
+            return cursor;
+        }else{
+            return null;
+        }
+    }
+
+    public void atualizarSenha(String email, String novaSenha){
+        if(isCadastrado(email)){
+            db = banco.getWritableDatabase();
+            String sql = "UPDATE "+TABELA+" SET "+SENHA+"="+novaSenha+" WHERE "+EMAIL+"="+email+" IF EXISTS";
+            db.execSQL(sql);
+        }
+    }
 }
