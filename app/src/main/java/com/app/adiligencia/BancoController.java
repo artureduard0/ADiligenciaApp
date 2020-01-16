@@ -68,8 +68,10 @@ public class BancoController {
     public void atualizarSenha(String email, String novaSenha){
         if(isCadastrado(email)){
             db = banco.getWritableDatabase();
-            String sql = "UPDATE "+TABELA+" SET "+SENHA+"="+novaSenha+" WHERE "+EMAIL+"="+email+" IF EXISTS";
-            db.execSQL(sql);
+            ContentValues args = new ContentValues();
+            args.put(SENHA,novaSenha);
+            //"UPDATE "+TABELA+" SET "+SENHA+" = "+novaSenha+" WHERE "+EMAIL+" = "+email
+            db.update(TABELA,args,EMAIL+" = ?",new String[]{ email });
         }
     }
 }

@@ -49,6 +49,11 @@ public class login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Credenciais incorretas.", Toast.LENGTH_LONG).show();
     }
 
+    public void recuperarSenha(View view){
+        Intent intent = new Intent(this,esqueceu_a_senha.class);
+        startActivity(intent);
+    }
+
     public void novoCadastro(View view) {
         Intent intent = new Intent(this, cadastro.class);
         startActivity(intent);

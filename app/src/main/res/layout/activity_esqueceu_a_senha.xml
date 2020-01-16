@@ -53,6 +53,7 @@
         android:width="350dp"
         android:background="@drawable/bt_login"
         android:gravity="center"
+        android:onClick="recuperar"
         android:text="@string/recuperar_senha"
         android:textColor="@color/white"
         android:textSize="18sp"
