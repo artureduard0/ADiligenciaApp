@@ -24,7 +24,8 @@
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiRecSenha" />
 
     <EditText
         android:id="@+id/tiRecSenha"
@@ -43,7 +44,8 @@
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tiRecConfSenha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiRecEmail" />
 
     <Button
         android:id="@+id/button2"
@@ -65,7 +67,7 @@
         android:id="@+id/tiRecEmail"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
+        android:layout_marginTop="16dp"
         android:width="350dp"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/email"
@@ -78,13 +80,14 @@
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tiRecSenha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/ctdescLogotipo"
         app:layout_constraintBottom_toTopOf="@+id/tiRecEmail"
         app:layout_constraintEnd_toEndOf="parent"

@@ -33,24 +33,4 @@ public class CriarBanco extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
-    public String getTabela(){
-        return this.TABELA;
-    }
-
-    public String getId(){
-        return this.ID;
-    }
-
-    public String getNome(){
-        return this.NOME;
-    }
-
-    public String getEmail(){
-        return this.EMAIL;
-    }
-
-    public String getSenha(){
-        return this.SENHA;
-    }
 }
