@@ -49,5 +49,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <include layout="@layout/searchbar"/>
 
 </LinearLayout>
