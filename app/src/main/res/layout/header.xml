@@ -24,7 +24,8 @@
             android:background="#bf271f"
             app:srcCompat="@drawable/menu32"
             tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="220dp" />
+            tools:layout_editor_absoluteY="220dp"
+            android:onClick="abrirMenu"/>
 
         <TextView
             android:id="@+id/textView2"

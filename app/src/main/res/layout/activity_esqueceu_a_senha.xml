@@ -9,9 +9,9 @@
 
     <EditText
         android:id="@+id/tiRecConfSenha"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginBottom="32dp"
         android:width="350dp"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/key"
@@ -29,8 +29,8 @@
 
     <EditText
         android:id="@+id/tiRecSenha"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginBottom="8dp"
         android:width="350dp"
         android:backgroundTint="@color/white"
@@ -51,7 +51,8 @@
         android:id="@+id/button2"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="190dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="250dp"
         android:width="350dp"
         android:background="@drawable/bt_login"
         android:gravity="center"
@@ -61,13 +62,15 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiRecConfSenha" />
 
     <EditText
         android:id="@+id/tiRecEmail"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:width="350dp"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/email"
@@ -87,7 +90,7 @@
         android:id="@+id/imageView3"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="@string/ctdescLogotipo"
         app:layout_constraintBottom_toTopOf="@+id/tiRecEmail"
         app:layout_constraintEnd_toEndOf="parent"

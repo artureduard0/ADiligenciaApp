@@ -17,7 +17,9 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+    }
 
+    public void abrirMenu(View view){
         //abre o menu através do botão do header
         ImageButton menuButton = findViewById(R.id.menu);
         menuButton.setOnClickListener(new View.OnClickListener() {
