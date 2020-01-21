@@ -127,7 +127,7 @@
         android:drawableStart="@drawable/enter24"
         android:drawablePadding="8dp"
         android:gravity="center"
-        android:onClick="login"
+        android:onClick="entrar"
         android:paddingLeft="124dp"
         android:paddingRight="124dp"
         android:text="@string/btnGo"

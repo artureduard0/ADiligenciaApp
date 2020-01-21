@@ -17,7 +17,7 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    public void login(View view) {
+    public void entrar(View view) {
         EditText email = findViewById(R.id.tiEmailLogin);
         EditText senha = findViewById(R.id.tiSenhaLogin);
         String strEmail = email.getText().toString();
@@ -39,7 +39,7 @@ public class login extends AppCompatActivity {
 
         if(strEmail.length() > 0 && strSenha.length() > 0 && strEmail.matches(expn)){
             //remover espaços em branco
-            strEmail.trim();
+            strEmail = strEmail.trim();
             BancoController crud = new BancoController(getBaseContext());
             Cursor cursor = crud.fazerLogin(strEmail,strSenha);
 

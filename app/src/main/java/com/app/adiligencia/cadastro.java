@@ -53,7 +53,7 @@ public class cadastro extends AppCompatActivity {
                 //verificar se ha campos em branco
                 if(strNome.length() > 0 && strEmail.length() > 0 && strSenha.length() > 0 && strConfSenha.length() > 0) {
                     BancoController crud = new BancoController(getBaseContext());
-                    strEmail.trim();
+                    strEmail = strEmail.trim();
 
                     //verificar e-mail válido e se já existe
                     if(strEmail.matches(expn)) {
@@ -68,9 +68,12 @@ public class cadastro extends AppCompatActivity {
 
                     //verificar senhas iguais
                     if (strSenha.equals(strConfSenha)) {
-                        crud.inserirDados(strNome, strEmail, strSenha);
-                        Toast.makeText(getApplicationContext(), "Pronto! Você já pode entrar.", Toast.LENGTH_LONG).show();
-                        startActivity(intent);
+                        if(crud.inserirDados(strNome, strEmail, strSenha) != -1) {
+                            Toast.makeText(getApplicationContext(), "Pronto! Você já pode entrar.", Toast.LENGTH_LONG).show();
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Houve um erro. Tente novamente!", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         Toast.makeText(getApplicationContext(), "As senhas não conferem.", Toast.LENGTH_LONG).show();
                     }

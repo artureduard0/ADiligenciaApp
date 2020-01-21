@@ -7,11 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class BancoController {
     private SQLiteDatabase db;
-    private CriarBanco banco;
-    private String NOME;
-    private String TABELA;
-    private String EMAIL;
-    private String SENHA;
+    private final CriarBanco banco;
+    private final String NOME;
+    private final String TABELA;
+    private final String EMAIL;
+    private final String SENHA;
 
     public BancoController(Context context) {
         banco = new CriarBanco(context);
@@ -21,9 +21,9 @@ public class BancoController {
         this.SENHA = banco.getSENHA();
     }
 
-    public String inserirDados(String nome, String email, String senha) {
+    public long inserirDados(String nome, String email, String senha) {
         if(isCadastrado(email))
-           return "Erro";
+           return -1;
 
         ContentValues valores;
         long resultado;
@@ -38,11 +38,7 @@ public class BancoController {
         resultado = db.insert(TABELA, null, valores);
         db.close();
 
-        if (resultado == -1) {
-            return "Erro";
-        } else {
-            return "Sucesso";
-        }
+        return resultado;
     }
 
     public boolean isCadastrado(String email){
