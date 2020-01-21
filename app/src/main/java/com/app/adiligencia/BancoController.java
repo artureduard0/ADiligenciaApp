@@ -8,17 +8,23 @@ import android.database.sqlite.SQLiteDatabase;
 public class BancoController {
     private SQLiteDatabase db;
     private CriarBanco banco;
-    private static final String NOME = "nome";
-    private static final String TABELA = "usuarios";
-    private static final String ID = "_id";
-    private static final String EMAIL = "email";
-    private static final String SENHA = "senha";
+    private String NOME;
+    private String TABELA;
+    private String EMAIL;
+    private String SENHA;
 
     public BancoController(Context context) {
         banco = new CriarBanco(context);
+        this.NOME = banco.getNOME();
+        this.TABELA = banco.getTABELA();
+        this.EMAIL = banco.getEMAIL();
+        this.SENHA = banco.getSENHA();
     }
 
     public String inserirDados(String nome, String email, String senha) {
+        if(isCadastrado(email))
+           return "Erro";
+
         ContentValues valores;
         long resultado;
 
@@ -46,6 +52,7 @@ public class BancoController {
         selectionArgs[0] = email;
         Cursor cursor = db.rawQuery(sql,selectionArgs);
         if(cursor == null || cursor.getCount() == 0){
+            db.close();
             return false;
         }else{
             return true;
@@ -59,6 +66,7 @@ public class BancoController {
         Cursor cursor = db.rawQuery(sql,selectionArgs);
         if(cursor != null) {
             cursor.moveToFirst();
+            db.close();
             return cursor;
         }else{
             return null;
@@ -72,6 +80,7 @@ public class BancoController {
             args.put(SENHA,novaSenha);
             //"UPDATE "+TABELA+" SET "+SENHA+" = "+novaSenha+" WHERE "+EMAIL+" = "+email
             db.update(TABELA,args,EMAIL+" = ?",new String[]{ email });
+            db.close();
         }
     }
 }

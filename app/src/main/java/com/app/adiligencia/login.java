@@ -22,14 +22,32 @@ public class login extends AppCompatActivity {
         EditText senha = findViewById(R.id.tiSenhaLogin);
         String strEmail = email.getText().toString();
         String strSenha = senha.getText().toString();
+
+        //auxiliares
+        String expn = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+
+                +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+
+                +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+
+                +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+
+                +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+
+                +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
         boolean erro = false;
 
-        if(strEmail.length() > 0 && strSenha.length() > 0){
+        if(strEmail.length() > 0 && strSenha.length() > 0 && strEmail.matches(expn)){
+            //remover espaços em branco
+            strEmail.trim();
             BancoController crud = new BancoController(getBaseContext());
             Cursor cursor = crud.fazerLogin(strEmail,strSenha);
+
+            //se não houver no banco
             if(cursor == null || cursor.getCount() == 0){
                 erro = true;
             }else {
+                //se houver verifica se são iguais
                 String resEmail = cursor.getString(cursor.getColumnIndex("email"));
                 String resSenha = cursor.getString(cursor.getColumnIndex("senha"));
 

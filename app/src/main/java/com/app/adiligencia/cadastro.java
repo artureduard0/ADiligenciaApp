@@ -53,6 +53,8 @@ public class cadastro extends AppCompatActivity {
                 //verificar se ha campos em branco
                 if(strNome.length() > 0 && strEmail.length() > 0 && strSenha.length() > 0 && strConfSenha.length() > 0) {
                     BancoController crud = new BancoController(getBaseContext());
+                    strEmail.trim();
+
                     //verificar e-mail válido e se já existe
                     if(strEmail.matches(expn)) {
                        if(crud.isCadastrado(strEmail)) {

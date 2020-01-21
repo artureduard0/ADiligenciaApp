@@ -25,6 +25,7 @@ public class esqueceu_a_senha extends AppCompatActivity {
         String strConfSenha = confSenha.getText().toString();
 
         if(strEmail.length() > 0 && strSenha.length() > 0 && strConfSenha.length() > 0){
+            strEmail.trim();
             if(strSenha.equals(strConfSenha)) {
                 BancoController crud = new BancoController(getBaseContext());
                 crud.atualizarSenha(strEmail, strSenha);
