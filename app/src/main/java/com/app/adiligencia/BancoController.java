@@ -60,7 +60,7 @@ public class BancoController {
         db = banco.getWritableDatabase();
         ContentValues args = new ContentValues();
         args.put(LOGADO,0);
-        db.update(TABELA,args,LOGADO+" = ?",null);
+        db.update(TABELA,args,LOGADO+" = ?",new String[]{ "1" });
         db.close();
     }
 
