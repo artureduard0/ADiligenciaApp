@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class welcome extends AppCompatActivity {
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +20,13 @@ public class welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
     }
 
-    public void nextScreen(View view) {
-        Intent intent = new Intent(this, login.class);
+    public void nextScreen(View view){
+        BancoController crud = new BancoController(getBaseContext());
+        if(crud.isLogado()){
+            intent = new Intent(this, MapsActivity.class);
+        }else{
+            intent = new Intent(this, login.class);
+        }
         startActivity(intent);
     }
 }

@@ -12,6 +12,7 @@ public class BancoController {
     private final String TABELA;
     private final String EMAIL;
     private final String SENHA;
+    private final String LOGADO;
 
     public BancoController(Context context) {
         banco = new CriarBanco(context);
@@ -19,6 +20,7 @@ public class BancoController {
         this.TABELA = banco.getTABELA();
         this.EMAIL = banco.getEMAIL();
         this.SENHA = banco.getSENHA();
+        this.LOGADO = banco.getLogado();
     }
 
     public long inserirDados(String nome, String email, String senha) {
@@ -34,11 +36,32 @@ public class BancoController {
         valores.put(NOME, nome);
         valores.put(EMAIL, email);
         valores.put(SENHA, senha);
+        valores.put(LOGADO, "1");
 
         resultado = db.insert(TABELA, null, valores);
         db.close();
 
         return resultado;
+    }
+
+    public boolean isLogado(){
+        db = banco.getWritableDatabase();
+        String sql = "SELECT * FROM "+TABELA+" WHERE "+LOGADO+" = 1";
+        Cursor cursor = db.rawQuery(sql,null);
+        if(cursor == null || cursor.getCount() == 0){
+            db.close();
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public void deslogar(){
+        db = banco.getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put(LOGADO,0);
+        db.update(TABELA,args,LOGADO+" = ?",null);
+        db.close();
     }
 
     public boolean isCadastrado(String email){
@@ -74,7 +97,6 @@ public class BancoController {
             db = banco.getWritableDatabase();
             ContentValues args = new ContentValues();
             args.put(SENHA,novaSenha);
-            //"UPDATE "+TABELA+" SET "+SENHA+" = "+novaSenha+" WHERE "+EMAIL+" = "+email
             db.update(TABELA,args,EMAIL+" = ?",new String[]{ email });
             db.close();
         }

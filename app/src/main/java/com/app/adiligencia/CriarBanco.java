@@ -12,10 +12,11 @@ public class CriarBanco extends SQLiteOpenHelper {
     private static final String ID = "_id";
     private static final String EMAIL = "email";
     private static final String SENHA = "senha";
+    private static final String LOGADO = "logado";
     private static final int VERSAO = 1;
 
     public CriarBanco(Context context){
-        super(context, "banco.db",null,VERSAO);
+        super(context, "bd.db",null,VERSAO);
     }
 
     @Override
@@ -24,7 +25,8 @@ public class CriarBanco extends SQLiteOpenHelper {
         String sql = "CREATE TABLE "+TABELA+"("+ID+" integer primary key autoincrement,"
                 +NOME+" text,"
                 +EMAIL+" text,"
-                +SENHA+" text"
+                +SENHA+" text,"
+                +LOGADO+" integer"
                 +")";
         db.execSQL(sql);
     }
@@ -48,6 +50,10 @@ public class CriarBanco extends SQLiteOpenHelper {
 
     public String getEMAIL() {
         return EMAIL;
+    }
+
+    public String getLogado(){
+        return this.LOGADO;
     }
 
     public String getSENHA() {

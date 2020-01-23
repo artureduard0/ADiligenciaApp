@@ -5,16 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.service.notification.StatusBarNotification;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -25,7 +29,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -42,23 +46,41 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Sydney and move the camera
+        LatLng saoleo = new LatLng(-29.764801, -51.148415);
+        mMap.addMarker(new MarkerOptions().position(saoleo).title("em São Leopoldo").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(saoleo));
+
+        //setar o zoom do mapa
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(saoleo, 12.0f));
+        //mostra controles de zoom
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+        mMap.addCircle(new CircleOptions()
+                .strokeColor(Color.RED)
+                .fillColor(Color.argb(70,50,50,10))
+                .center(saoleo)
+                .radius(1580.0)
+                .strokeWidth(3f)
+        );
     }
 
-    public void abrirMenu(View view){
-        //abre o menu através do botão do header
-        ImageButton menuButton = findViewById(R.id.menu);
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DrawerLayout navDrawer = findViewById(R.id.drawer_layout);
-                navDrawer.openDrawer(GravityCompat.START);
-            }
-        });
+    public void sair(View view){
+        BancoController crud = new BancoController(getBaseContext());
+        crud.deslogar();
+        Intent intent = new Intent(this,welcome.class);
+        startActivity(intent);
     }
 }

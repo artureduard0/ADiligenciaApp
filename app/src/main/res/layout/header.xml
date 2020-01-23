@@ -17,16 +17,6 @@
         tools:layout_editor_absoluteX="45dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <ImageButton
-            android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#bf271f"
-            app:srcCompat="@drawable/menu32"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="220dp"
-            android:onClick="abrirMenu"/>
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
