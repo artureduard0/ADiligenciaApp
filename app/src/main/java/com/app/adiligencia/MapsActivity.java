@@ -1,6 +1,5 @@
 package com.app.adiligencia;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +20,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -31,11 +32,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
     private DrawerLayout drawer;
     private GoogleMap mMap;
     private LocationManager locationManager;
+    private FusedLocationProviderClient fusedLocationClient;
 
     //declara variaveis para permissão location
     private static final String[] LOCATION_PERMS={
@@ -52,6 +55,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -79,10 +84,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Add a marker in Sydney and move the camera
         LatLng saoleo = new LatLng(-29.764801, -51.148415);
         mMap.addMarker(new MarkerOptions().position(saoleo).title("em São Leopoldo").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(saoleo));
+       // mMap.moveCamera(CameraUpdateFactory.newLatLng(saoleo));
 
         //setar o zoom do mapa
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(saoleo, 12.0f));
+       // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(saoleo, 12.0f));
         //mostra controles de zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
@@ -109,8 +114,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if(!isLocationEnabled())
             showAlert();
 
-        mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
+
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            LatLng locNow = new LatLng(location.getLatitude(),location.getLongitude());
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(locNow));
+                            CameraUpdateFactory.zoomIn();
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locNow,14.5f));
+                            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+                        }else{
+                            showAlert();
+                        }
+                    }
+                });
+
 
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
